@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Store;
 
 use App\Store;
+use Validator;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -38,7 +40,22 @@ class StoreController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'image' => 'required|url',
+        ]);
+
+        if($validator->fails()){
+            $errors = (new ValidationException($validator))->errors();
+            return response()->json(['errors' => $errors], 422);
+        }
+
+        $store = Store::create([
+            'name'=>$request->get('name'),
+            'image'=>$request->get('image')
+        ]);
+
+        return response()->json(['data'=>$store],201);
     }
 
     /**

@@ -3,7 +3,7 @@
 namespace App;
 
 use Jenssegers\Mongodb\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Jenssegers\Mongodb\Eloquent\SoftDeletes;
 
 class Store extends Model
 {
