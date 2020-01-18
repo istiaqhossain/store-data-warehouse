@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+/**
+ * Stores
+ */
+Route::resource('stores','Store\StoreController',['only'=>['index','store','show']]);
