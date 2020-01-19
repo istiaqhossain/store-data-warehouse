@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Store;
+namespace App\Http\Controllers;
 
 use App\Store;
 use Validator;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class StoreController extends Controller
 {

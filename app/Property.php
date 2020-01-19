@@ -2,11 +2,10 @@
 
 namespace App;
 
-use App\Property;
 use Jenssegers\Mongodb\Eloquent\Model;
 use Jenssegers\Mongodb\Eloquent\SoftDeletes;
 
-class Store extends Model
+class Property extends Model
 {
     use SoftDeletes;
 
@@ -15,14 +14,13 @@ class Store extends Model
     protected $collection = 'stores';
 
     protected $fillable = [
-        'name',
-        'image'
+        'name'
     ];
 
     protected $dates = ['deleted_at'];
 
-    public function properties()
+    public function store()
     {
-        return $this->embedsMany('App\Property');
+        return $this->embedsOne('App\Store');
     }
 }
